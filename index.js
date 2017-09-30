@@ -5,8 +5,7 @@ const potentialReprompt = "Have an idea for a food to create?";
 const recipeIntro = "This recipe sounds good. Yum!";
 
 const Alexa = require('alexa-sdk');
-const APP_ID = undefined;
-
+const APP_ID = 'amzn1.ask.skill.d45b84e9-1b61-401d-b033-6f55ad943a29';
 const handlers = {
   'LaunchRequest': function()
   {
@@ -17,11 +16,11 @@ const handlers = {
   'AskForRecipes': function()
   {
   
-    var filledSlots = delegateSlotCollection.call(this);
+   // var filledSlots = delegateSlotCollection.call(this);
     
     var alexaOutput = recipeIntro;
     
-    
+    speechOutput="I am looking for recipes for "+this.event.request.intent.slots.foodName.value;
     
     
     this.response.speak(speechOutput);
@@ -29,23 +28,23 @@ const handlers = {
   },
   
   'AMAZON.HelpIntent': function () {
-        speechOutput = "";
+        speechOutput = "HelpIntent";
         reprompt = "";
         this.response.speak(speechOutput).listen(reprompt);
         this.emit(':responseReady');
     },
     'AMAZON.CancelIntent': function () {
-        speechOutput = "";
+        speechOutput = "CancelIntent";
         this.response.speak(speechOutput);
         this.emit(':responseReady');
     },
     'AMAZON.StopIntent': function () {
-        speechOutput = "";
+        speechOutput = "StopIntent";
         this.response.speak(speechOutput);
         this.emit(':responseReady');
     },
     'SessionEndedRequest': function () {
-        var speechOutput = "";
+        var speechOutput = "SessionEndedRequest";
         this.response.speak(speechOutput);
         this.emit(':responseReady');
     },
@@ -53,15 +52,15 @@ const handlers = {
 //Intent Handlers{} finished 
 
 exports.handler = (event, context, callback) => {
-    exports.handler = (event, context) => {
+    
     var alexa = Alexa.handler(event, context);
     alexa.appId = APP_ID;
     alexa.registerHandlers(handlers);
     alexa.execute();
-};
+    //callback(null,"complete");
 };
 
-function delegateSlotCollection(){
+/*function delegateSlotCollection(){
   console.log("in delegateSlotCollection");
   console.log("current dialogState: "+this.event.request.dialogState);
     if (this.event.request.dialogState === "STARTED") {
@@ -79,4 +78,4 @@ function delegateSlotCollection(){
       
       return this.event.request.intent;
     }
-}
+}*/
