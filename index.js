@@ -1,5 +1,5 @@
-const speechOutput;
-const reprompt;
+var speechOutput;
+var reprompt;
 const openingStatement = "Hello, what would you like to make?";
 const potentialReprompt = "Have an idea for a food to create?";
 const recipeIntro = "This recipe sounds good. Yum!";

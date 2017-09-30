@@ -1,0 +1,16 @@
+{
+  "name": "StepByStep",
+  "version": "1.0.0",
+  "description": "Ask alexa for recipes",
+  "readme": "Lambda function for Alexa",
+  "repository": "my repository",
+  "main": "index.js",
+  "scripts": {
+  
+  },
+  "author": "me",
+ 
+  "dependencies": {
+    "alexa-sdk": "^1.0.7"
+  }
+}
