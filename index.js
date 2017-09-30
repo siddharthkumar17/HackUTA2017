@@ -24,7 +24,8 @@ const handlers = {
     
     
     
-    
+    this.response.speak(speechOutput);
+    this.emit(":responseReady");
   },
   
   'AMAZON.HelpIntent': function () {
