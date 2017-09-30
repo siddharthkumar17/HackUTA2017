@@ -1,8 +1,8 @@
 const speechOutput;
 const reprompt;
-const openingStatement = "Hello, what would you like to make?"
-const potentialReprompt = "Have an idea for a food to create?"
-const recipeIntro = [ "This recipe sounds good. Yum!" ];
+const openingStatement = "Hello, what would you like to make?";
+const potentialReprompt = "Have an idea for a food to create?";
+const recipeIntro = "This recipe sounds good. Yum!";
 
 const Alexa = require('alexa-sdk');
 const APP_ID = undefined;
@@ -10,13 +10,18 @@ const APP_ID = undefined;
 const handlers = {
   'LaunchRequest': function()
   {
-  		this.response.speak(openingStatement).listen(potentialReprompt);
-			this.emit (':responseReady');
-	},
+      this.response.speak(openingStatement).listen(potentialReprompt);
+      this.emit (':responseReady');
+  },
   
-  'AskForRecipes': function(){
+  'AskForRecipes': function()
+  {
   
-  	var filledSlots = delegateSlotCollection.call(this);
+    var filledSlots = delegateSlotCollection.call(this);
+    
+    var alexaOutput = recipeIntro;
+    
+    
     
     
     
@@ -74,4 +79,3 @@ function delegateSlotCollection(){
       return this.event.request.intent;
     }
 }
-
